@@ -5,6 +5,7 @@ local opt = vim.opt
 -- opt.foldcolumn = 1
 -- opt.foldexpr = "nvim_treesitter#foldexpr()"
 
+opt.foldmethod = "manual"
 
 -- setup must be called before loading
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme "catppuccin-macchiato"

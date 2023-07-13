@@ -27,7 +27,6 @@ esac
 
 if [[ $CHARGING != "" ]]; then
   ICON=$BATTERY_CHARGING
-  DRAWING=off
 fi
 
 sketchybar --set $NAME drawing=$DRAWING icon="$ICON" label="${PERCENTAGE}%" icon.color=$COLOR label.color=$COLOR

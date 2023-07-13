@@ -9,14 +9,14 @@ vim.cmd [[packadd packer.nvim]]
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
+  -- use "akinsho/bufferline.nvim"
   use({
-    "neanias/everforest-nvim",
-    -- Optional; default configuration will be used if setup isn't called.
-    config = function()
-      require("everforest").setup()
-    end,
+    'willothy/nvim-cokeline',
+    requires = {
+      "nvim-lua/plenary.nvim",        -- Required for v0.4.0+
+      "kyazdani42/nvim-web-devicons", -- If you want devicons
+    },
   })
-  use "akinsho/bufferline.nvim"
   use 'nvim-lualine/lualine.nvim'       -- Statusline
   use 'nvim-lua/plenary.nvim'           -- Common utilities
   use 'onsails/lspkind-nvim'            -- vscode-like pictograms
@@ -39,10 +39,6 @@ packer.startup(function(use)
       })
     end
   })
-  -- use {
-  --   'nvim-treesitter/nvim-treesitter',
-  --   run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-  -- }
   use {
     "nvim-treesitter/nvim-treesitter-textobjects",
     after = "nvim-treesitter",
@@ -65,9 +61,9 @@ packer.startup(function(use)
     run = function() vim.fn["mkdp#util#install"]() end,
   })
   -- use 'github/copilot.vim'
-
+  use 'tpope/vim-fugitive'
   use 'lewis6991/gitsigns.nvim'
-  use 'dinhhuy258/git.nvim' -- For git blame & browse
+  -- use 'dinhhuy258/git.nvim' -- For git blame & browse
   use { 'TimUntersberger/neogit', requires = { 'nvim-lua/plenary.nvim', 'sindrets/diffview.nvim' } }
   use { 'anuvyklack/pretty-fold.nvim',
     config = function()
@@ -85,15 +81,32 @@ packer.startup(function(use)
   }
   use { 'kevinhwang91/nvim-bqf' }
   use { 'kdheepak/lazygit.nvim' }
-  use { 'ThePrimeagen/harpoon' }
   use { 'mg979/vim-visual-multi' }
   use { 'psliwka/vim-smoothie' }
+  use { 'ThePrimeagen/harpoon', branch = 'master' }
+  use {
+    "chrisgrieser/nvim-various-textobjs",
+    config = function()
+      require("various-textobjs").setup({ useDefaultKeymaps = true })
+    end,
+  }
+  use { "chrisgrieser/nvim-spider" }
   use {
     'phaazon/hop.nvim',
     branch = 'v2', -- optional but strongly recommended
     config = function()
       -- you can configure Hop the way you like here; see :h hop-config
       require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    end
+  }
+  use {
+    'Exafunction/codeium.vim',
+    config = function()
+      -- Change '<C-g>' here to any keycode you like.
+      vim.keymap.set('i', '<Tab>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+      vim.keymap.set('i', '<M-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+      vim.keymap.set('i', '<M-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+      vim.keymap.set('i', '<M-c>', function() return vim.fn['codeium#Clear']() end, { expr = true })
     end
   }
 end)

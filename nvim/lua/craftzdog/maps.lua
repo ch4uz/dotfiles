@@ -16,24 +16,27 @@ keymap.set('n', '<C-a>', 'gg<S-v>G')
 --vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
 
 -- Toggle NvimTree
-keymap.set('n', 's;', ':NvimTreeToggle<Return>')
+keymap.set('n', ';s', ':NvimTreeToggle<Return>')
 
 -- Open Lazygit
 keymap.set('n', '<Space>g', ':LazyGit<Return>')
 
 -- New tab
 keymap.set('n', '<Space>t', ':tabedit<Return>')
-keymap.set('n', '<Space>x', ':q!<Return>')
 
 -- Change tabs
-vim.keymap.set('n', '<Space>]', '<Cmd>BufferLineCycleNext<CR>', {})
-vim.keymap.set('n', '<Space>[', '<Cmd>BufferLineCyclePrev<CR>', {})
+keymap.set('n', '<Space>[', '<Plug>(cokeline-focus-prev)', { silent = true })
+keymap.set('n', '<Space>]', '<Plug>(cokeline-focus-next)', { silent = true })
+
+for i = 1, 9 do
+  keymap.set('n', ('<Leader>%s'):format(i), ('<Plug>(cokeline-focus-%s)'):format(i), { silent = true })
+end
+
 
 -- Split window
 keymap.set('n', 'ss', ':split<Return><C-w>w')
 keymap.set('n', 'sv', ':vsplit<Return><C-w>w')
 -- Move window
-keymap.set('n', '<Space>', '<C-w>w')
 keymap.set('', 'sh', '<C-w>h')
 keymap.set('', 'sk', '<C-w>k')
 keymap.set('', 'sj', '<C-w>j')
@@ -47,3 +50,26 @@ keymap.set('n', '<C-w><down>', '10<C-w>-')
 
 -- Paste to selection without copying
 keymap.set('', '<leader>p', '"_dP')
+
+keymap.set('', 'L', '$')
+
+-- Nvim Spider
+keymap.set({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
+keymap.set({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
+keymap.set({ "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
+keymap.set({ "n", "o", "x" }, "ge", "<cmd>lua require('spider').motion('ge')<CR>", { desc = "Spider-ge" })
+
+-- Nvim Various TextObjs
+keymap.set({ "n", "o", "x" }, "ao", '<cmd>lua require("various-textobjs").subword(false)<CR>')
+keymap.set({ "n", "o", "x" }, "io", '<cmd>lua require("various-textobjs").subword(true)<CR>')
+
+keymap.set('', '<leader>q', ':noh<Return>')
+
+vim.cmd([[
+augroup FugitiveMappings
+  autocmd!
+  autocmd FileType fugitive nmap <buffer> s <Space>
+augroup
+]])
+
+-- autocmd FileType fugitive nnoremap <buffer> <silent> s <Space>
