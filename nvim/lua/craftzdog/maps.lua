@@ -64,3 +64,14 @@ keymap.set({ "n", "o", "x" }, "ao", '<cmd>lua require("various-textobjs").subwor
 keymap.set({ "n", "o", "x" }, "io", '<cmd>lua require("various-textobjs").subword(true)<CR>')
 
 keymap.set('', '<leader>q', ':noh<Return>')
+
+
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("n", "J", "mzJ`z")
+
+-- Define key mappings
+keymap.set('n', '<C-D>', "<cmd>call smoothie#do('<C-D>zz')<CR>", { noremap = true, silent = true })
+keymap.set('v', '<C-D>', "<cmd>call smoothie#do('<C-D>zz')<CR>", { noremap = true, silent = true })
+keymap.set('n', '<C-U>', "<cmd>call smoothie#do('<C-U>zz')<CR>", { noremap = true, silent = true })
+keymap.set('v', '<C-U>', "<cmd>call smoothie#do('<C-U>zz')<CR>", { noremap = true, silent = true })
