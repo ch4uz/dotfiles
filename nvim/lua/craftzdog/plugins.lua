@@ -28,7 +28,14 @@ packer.startup(function(use)
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
 
-  use 'glepnir/lspsaga.nvim' -- LSP UIs
+  use({
+    'nvimdev/lspsaga.nvim',
+    after = 'nvim-lspconfig',
+    commit = 'c7cc005ba2600c3eaf2bddb2b631ecc9d63b2ba8',
+    config = function()
+      require('lspsaga').setup({})
+    end,
+  })
   use 'L3MON4D3/LuaSnip'
   use({
     "kylechui/nvim-surround",

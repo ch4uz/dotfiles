@@ -64,12 +64,3 @@ keymap.set({ "n", "o", "x" }, "ao", '<cmd>lua require("various-textobjs").subwor
 keymap.set({ "n", "o", "x" }, "io", '<cmd>lua require("various-textobjs").subword(true)<CR>')
 
 keymap.set('', '<leader>q', ':noh<Return>')
-
-vim.cmd([[
-augroup FugitiveMappings
-  autocmd!
-  autocmd FileType fugitive nmap <buffer> s <Space>
-augroup
-]])
-
--- autocmd FileType fugitive nnoremap <buffer> <silent> s <Space>

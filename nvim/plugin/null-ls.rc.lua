@@ -6,17 +6,22 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local lsp_formatting = function(bufnr)
   vim.lsp.buf.format({
     filter = function(client)
-      return client.name == "null-ls"
+      -- return client.name == "null-ls"
+      return client.name ~= "volar"
     end,
     bufnr = bufnr,
   })
 end
 
+
+
 null_ls.setup {
   sources = {
     null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.eslint_,
     -- null_ls.builtins.diagnostics.eslint_d.with({
-    --   diagnostics_format = '[eslint] #{m}\n(#{c})'
+    --   diagnostics_format = '[eslint] #{m}\n(#{c})',
+    --   extra_args = { "--stdin", "--fix-to-stdout" },
     -- }),
     null_ls.builtins.diagnostics.fish
   },
