@@ -69,7 +69,7 @@ shift + alt - 0x29 : yabai -m window --display next; yabai -m display --focus ne
 alt - f : yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_focus
 
 # float / unfloat window and center on screen
-# alt - w : yabai -m window --toggle float; sketchybar --trigger window_focus
+alt - d : yabai -m window --toggle float; sketchybar --trigger window_focus
 
 # increase window size
 ctrl + alt - h : yabai -m window --resize left:-40:0

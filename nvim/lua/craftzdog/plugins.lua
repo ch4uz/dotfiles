@@ -106,7 +106,7 @@ packer.startup(function(use)
       require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end
   }
-  use {
+     use {
     'Exafunction/codeium.vim',
     config = function()
       -- Change '<C-g>' here to any keycode you like.
@@ -116,4 +116,6 @@ packer.startup(function(use)
       vim.keymap.set('i', '<M-c>', function() return vim.fn['codeium#Clear']() end, { expr = true })
     end
   }
+
+      use { 'mhartington/formatter.nvim' }
 end)

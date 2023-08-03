@@ -10,21 +10,21 @@ window_state() {
   COLOR=$BAR_BORDER_COLOR
   ICON=""
 
-  if [ "$(echo "$WINDOW" | jq '.["is-floating"]')" = "true" ]; then
-    ICON+=$YABAI_FLOAT
-    COLOR=$MAGENTA
-  elif [ "$(echo "$WINDOW" | jq '.["has-fullscreen-zoom"]')" = "true" ]; then
-    ICON+=$YABAI_FULLSCREEN_ZOOM
-    COLOR=$GREEN
-  elif [ "$(echo "$WINDOW" | jq '.["has-parent-zoom"]')" = "true" ]; then
-    ICON+=$YABAI_PARENT_ZOOM
-    COLOR=$BLUE
-  elif [[ $STACK_INDEX -gt 0 ]]; then
-    LAST_STACK_INDEX=$(yabai -m query --windows --window stack.last | jq '.["stack-index"]')
-    ICON+=$YABAI_STACK
-    LABEL="$(printf "[%s/%s]" "$STACK_INDEX" "$LAST_STACK_INDEX")"
-    COLOR=$RED
-  fi
+  # if [ "$(echo "$WINDOW" | jq '.["is-floating"]')" = "true" ]; then
+  #   ICON+=$YABAI_FLOAT
+  #   COLOR=$MAGENTA
+  # elif [ "$(echo "$WINDOW" | jq '.["has-fullscreen-zoom"]')" = "true" ]; then
+  #   ICON+=$YABAI_FULLSCREEN_ZOOM
+  #   COLOR=$GREEN
+  # elif [ "$(echo "$WINDOW" | jq '.["has-parent-zoom"]')" = "true" ]; then
+  #   ICON+=$YABAI_PARENT_ZOOM
+  #   COLOR=$BLUE
+  # elif [[ $STACK_INDEX -gt 0 ]]; then
+  #   LAST_STACK_INDEX=$(yabai -m query --windows --window stack.last | jq '.["stack-index"]')
+  #   ICON+=$YABAI_STACK
+  #   LABEL="$(printf "[%s/%s]" "$STACK_INDEX" "$LAST_STACK_INDEX")"
+  #   COLOR=$RED
+  # fi
 
   args=(--animate sin 10 --bar border_color=$COLOR
                          --set $NAME icon.color=$COLOR)
@@ -73,7 +73,7 @@ case "$SENDER" in
   ;;
   "forced") exit 0
   ;;
-  "window_focus") window_state 
+  "window_focus") window_state
   ;;
   "windows_on_spaces" | "space_change") windows_on_spaces
   ;;
