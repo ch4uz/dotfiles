@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SPACE_ICONS=("1" "2" "3" "Q" "W" "E" "7" "8" "9" "10" "11" "12" "13" "14" "15")
+SPACE_ICONS=("1" "2" "3" "Q" "W" "E" "R" "8" "9" "10" "11" "12" "13" "14" "15")
 
 # Destroy space on right click, focus space on left click.
 # New space by left clicking separator (>)
@@ -16,12 +16,12 @@ do
     icon="${SPACE_ICONS[i]}"
     icon.padding_left=10
     icon.padding_right=10
-    padding_left=2
-    padding_right=2
+    padding_left=4
+    padding_right=4
     label.padding_right=20
-    icon.highlight_color=$RED
+    icon.highlight_color=$MAGENTA
     label.color=$GREY
-    label.highlight_color=$WHITE
+    label.highlight_color=$MAGENTA
     label.font="sketchybar-app-font:Regular:16.0"
     label.y_offset=-1
     background.color=$BACKGROUND_1
@@ -52,8 +52,8 @@ separator=(
   icon.color=$WHITE
 )
 
-sketchybar --add bracket spaces_bracket '/space\..*/'  \
-           --set spaces_bracket "${spaces_bracket[@]}" \
-                                                       \
-           --add item separator left                   \
-           --set separator "${separator[@]}"
+# sketchybar --add bracket spaces_bracket '/space\..*/'  \
+#            --set spaces_bracket "${spaces_bracket[@]}" \
+#                                                        \
+#            --add item separator left                   \
+#            --set separator "${separator[@]}"

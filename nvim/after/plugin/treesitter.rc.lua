@@ -2,7 +2,7 @@ local status, ts = pcall(require, "nvim-treesitter.configs")
 if (not status) then return end
 
 ts.setup {
-  highlight = {
+    highlight = {
     enable = true,
     disable = {},
   },
@@ -11,6 +11,7 @@ ts.setup {
     disable = {},
   },
   ensure_installed = {
+    "json",
     "markdown",
     "markdown_inline",
     "javascript",
@@ -19,7 +20,6 @@ ts.setup {
     "toml",
     "fish",
     "php",
-    "json",
     "yaml",
     "swift",
     "css",
@@ -29,25 +29,39 @@ ts.setup {
   autotag = {
     enable = true,
   },
-
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "<C-Space>",
+      node_incremental = "<C-Space>",
+      scope_incremental = false,
+      node_decremental = "<bs>",
+    },
+  },
   textobjects = {
     lsp_interop = { enable = true },
     select = {
       enable = true,
       keymaps = {
+        ["i="] = "@assignment.inner",
+        ["a="] = "@assignment.outer",
+        ["l="] = "@assignment.lhs",
+        ["r="] = "@assignment.rhs",
+
+        ["aa"] = "@parameter.outer",
+        ["ia"] = "@parameter.inner",
+
         ["al"] = "@loop.outer",
         ["il"] = "@loop.inner",
+
         ["ab"] = "@block.outer",
         ["ib"] = "@block.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
+
+        ["ac"] = "@call.outer",
+        ["ic"] = "@call.inner",
+
         ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ap"] = "@parameter.outer",
-        ["ip"] = "@parameter.inner",
-        ["ak"] = "@comment.outer",
-        ["ia"] = "@assignment.inner",
-        ["aa"] = "@assignment.outer"
+        ["if"] = "@function.inner"
       },
     },
     swap = {

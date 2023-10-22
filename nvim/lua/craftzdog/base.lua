@@ -27,6 +27,7 @@ vim.opt.tabstop = 2
 vim.opt.wrap = true
 vim.opt.backspace = { 'start', 'eol', 'indent' }
 vim.opt.path:append { '**' } -- Finding files - Search down into subfolders
+vim.opt.swapfile = false
 vim.opt.wildignore:append { '*/node_modules/*' }
 
 -- Undercurl

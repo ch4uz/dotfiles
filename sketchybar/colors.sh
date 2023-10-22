@@ -11,14 +11,18 @@ export ORANGE=0xfff5a97f
 export MAGENTA=0xffc6a0f6
 export GREY=0xff939ab7
 export TRANSPARENT=0x00000000
+export CYAN=0xff8bd5ca
 
 # General bar colors
-export BAR_COLOR=0x551e1e2e
+export BAR_COLOR=0x001e1e2e
 export BAR_BORDER_COLOR=0x00494d64 #0xa024273a
 export ICON_COLOR=$WHITE # Color of all icons
 export LABEL_COLOR=$WHITE # Color of all labels
-export BACKGROUND_1=0x603c3e4f
-export BACKGROUND_2=0x60494d64
+export BACKGROUND_1=0x7724273A
+export BACKGROUND_1=0x7724273A
+# export BACKGROUND_2=0x00151828
+# export BACKGROUND_1=$TRANSPARENT
+# export BACKGROUND_2=$TRANSPARENT
 
 export POPUP_BACKGROUND_COLOR=0xff1e1e2e
 export POPUP_BORDER_COLOR=$WHITE

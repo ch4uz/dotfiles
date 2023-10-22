@@ -1,5 +1,5 @@
 #!/bin/bash
-export CONFIG_DIR=$HOME/.config/sketchybar 
+export CONFIG_DIR=$HOME/.config/sketchybar
 
 source "$CONFIG_DIR/colors.sh" # Loads all defined colors
 source "$CONFIG_DIR/icons.sh" # Loads all defined icons
@@ -21,17 +21,17 @@ launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /
 
 # Setting up the general bar appearance of the bar
 bar=(
-  height=45
+  height=34
   color=$BAR_COLOR
   border_width=2
   border_color=$BAR_BORDER_COLOR
   shadow=off
   position=top
   sticky=on
-  padding_right=10
-  padding_left=10
-  y_offset=-5
-  margin=-2
+  padding_right=12
+  padding_left=16
+  y_offset=6
+  margin=0
 )
 
 sketchybar --bar "${bar[@]}"
@@ -63,7 +63,7 @@ defaults=(
 sketchybar --default "${defaults[@]}"
 
 # Left
-source "$ITEM_DIR/apple.sh"
+# source "$ITEM_DIR/apple.sh"
 source "$ITEM_DIR/spaces.sh"
 source "$ITEM_DIR/yabai.sh"
 source "$ITEM_DIR/front_app.sh"
@@ -77,7 +77,7 @@ source "$ITEM_DIR/calendar.sh"
 # source "$ITEM_DIR/github.sh"
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/volume.sh"
-source "$ITEM_DIR/cpu.sh"
+# source "$ITEM_DIR/cpu.sh"
 
 # Forcing all item scripts to run (never do this outside of sketchybarrc)
 sketchybar --update

@@ -2,14 +2,15 @@ local status, bufferline = pcall(require, "bufferline")
 if (not status) then return end
 
 local mocha = require("catppuccin.palettes").get_palette "mocha"
+
+
 bufferline.setup({
   options = {
     mode = "tabs",
-    -- separator_style = 'slope',
-    separator_style = { "<", ">" },
-    indicator_icon = '',
-    always_show_bufferline = false,
+    separator_style = 'thin',
+    always_show_bufferline = true,
     show_buffer_close_icons = false,
+    show_duplicate_prefix = false,
     show_close_icon = false,
     color_icons = true,
     diagnostics = "nvim_lsp",
@@ -26,18 +27,18 @@ bufferline.setup({
       }
     },
   },
-  -- highlights = require("catppuccin.groups.integrations.bufferline").get {
-  --   styles = { "italic", "bold" },
-  -- custom = {
-  --   all = {
-  --     fill = { bg = "NONE" },
-  --   },
-  --   mocha = {
-  --     background = { fg = mocha.text },
-  --   },
-  --   macchiato = {
-  --     background = { fg = mocha.text },
-  --   },
-  -- },
-  -- },
+  highlights = require("catppuccin.groups.integrations.bufferline").get {
+    styles = { "italic", "bold" },
+  custom = {
+    all = {
+      fill = { bg = "NONE" },
+    },
+    mocha = {
+      background = { fg = mocha.text },
+    },
+    macchiato = {
+      background = { fg = mocha.text },
+    },
+  },
+  },
 })
