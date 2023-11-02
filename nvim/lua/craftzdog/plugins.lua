@@ -10,14 +10,8 @@ packer.startup(function(use)
   use 'mfussenegger/nvim-dap'
 	use("wbthomason/packer.nvim")
 	use({ "catppuccin/nvim", as = "catppuccin" })
+
   use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
-	-- use({
-	-- 	"willothy/nvim-cokeline",
-	-- 	requires = {
-	-- 		"nvim-lua/plenary.nvim", -- Required for v0.4.0+
-	-- 		"kyazdani42/nvim-web-devicons", -- If you want devicons
-	-- 	},
-	-- })
 	use("nvim-lualine/lualine.nvim") -- Statusline
 	use("nvim-lua/plenary.nvim") -- Common utilities
 	use("onsails/lspkind-nvim") -- vscode-like pictograms
@@ -124,7 +118,7 @@ packer.startup(function(use)
 		end,
 	})
 
-	use({ "mhartington/formatter.nvim" })
+	-- use({ "mhartington/formatter.nvim" })
 	use({
 		"davidosomething/format-ts-errors.nvim",
 	})
@@ -134,4 +128,14 @@ packer.startup(function(use)
 			"nvim-lua/plenary.nvim", -- Required for v0.4.0+
 		},
 	})
+
+use {
+  'rmagatti/auto-session',
+  config = function()
+    require("auto-session").setup {
+      log_level = "error",
+      auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/"},
+    }
+  end
+}
 end)

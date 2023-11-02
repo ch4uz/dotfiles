@@ -27,18 +27,18 @@ bufferline.setup({
       }
     },
   },
-  highlights = require("catppuccin.groups.integrations.bufferline").get {
-    styles = { "italic", "bold" },
-  custom = {
-    all = {
-      fill = { bg = "NONE" },
-    },
-    mocha = {
-      background = { fg = mocha.text },
-    },
-    macchiato = {
-      background = { fg = mocha.text },
-    },
-  },
-  },
+  -- highlights = require("catppuccin.groups.integrations.bufferline").get {
+  --   styles = { "italic", "bold" },
+  -- custom = {
+  --   all = {
+  --     fill = { bg = "NONE" },
+  --   },
+  --   mocha = {
+  --     background = { fg = mocha.text },
+  --   },
+  --   macchiato = {
+  --     background = { fg = mocha.text },
+  --   },
+  -- },
+  -- },
 })
